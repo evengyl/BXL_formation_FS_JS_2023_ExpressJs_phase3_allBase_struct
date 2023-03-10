@@ -18,7 +18,7 @@ routerEmployees
         //car en réalité on lui donne un nom de callback à appeler lors du match routage !!!
 
 routerEmployees
-    .route("/:id")
+    .route("/:id") // -> req.params.id
         .get(employeesController.getOne)
         .put(employeesController.update)
         .delete(employeesController.delete)

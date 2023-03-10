@@ -10,7 +10,8 @@ const employeesService = {
     
     getAll : () => {
         let allEmp = employeesModels.getAll()
-        //BAL&é"'()
+        //BAL
+        allEmp = allEmp.reverse()
         return allEmp
     },
 
