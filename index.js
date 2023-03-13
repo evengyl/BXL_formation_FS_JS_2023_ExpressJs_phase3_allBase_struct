@@ -11,7 +11,16 @@ app.use("/api/v1", routerBase)
 
 
 app.all("*", (req, res, next) => {
-    res.json({ error : "404"})
+
+    if(res.locals.message != undefined)
+    {
+        responseError = {
+            Message : res.locals.message,
+            ErrorCode : 404
+        }
+    }
+
+    res.status(404).json(responseError)
 })
 
 

@@ -10,34 +10,44 @@ const employeesService = {
     
     getAll : () => {
         let allEmp = employeesModels.getAll()
-        //BAL
         return allEmp
     },
 
     getOne : (id) => {
         let oneEmp = employeesModels.getOne(id)
+
         //BAL
-        return oneEmp
+        if(oneEmp != undefined)
+            return oneEmp
+        else
+            return { errorMessage : `L'employé numéro : ${id} n'existe pas` }
     },
 
     create : (newEmp) => {
-        newEmp.fired = false
-        
-        let newEmpCreated = employeesModels.create(newEmp)
         //BAL
+        newEmp.fired = false
+
+        let newEmpCreated = employeesModels.create(newEmp)
         return newEmpCreated
     },
 
-    update : (id) => {
-        let upEmp = employeesModels.update(id)
-        //BAL       
+    update : (empToUpdate) => {
+        let upEmp = employeesModels.update(empToUpdate)
         return upEmp
     },
 
-    delete : (id) => {
-        let firedEmp = employeesModels.delete(id)
-        //BAL
-        return firedEmp
+    delete : (empToFired) => {
+
+        if(empToFired.fired == false)
+        {
+            empToFired.fired = true
+            let firedEmp = employeesModels.delete(empToFired)
+            return firedEmp
+        }
+        else
+        {
+            return { errorMessage : `L'employé numéro : ${empToFired.id} à déjà été licencié...` }
+        }
     }
 }
 

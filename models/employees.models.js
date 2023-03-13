@@ -7,7 +7,7 @@ const employeesModels = {
     },
 
     getOne : (id) => {
-        return listEmp[id]
+        return employees.find(emp => emp.id == id)
     },
 
     create : (newEmp) => {
@@ -19,14 +19,18 @@ const employeesModels = {
         return empCreated
     },
 
-    update : (id) => {
-        listEmp[id] = "updated emp" + (parseInt(id)+1)
-        return [...listEmp]
+    update : (empToUpdate) => {
+        let indexEmp = employees.findIndex(emp => emp.id == empToUpdate.id)
+        
+        employees[indexEmp] = empToUpdate
+        return employees[indexEmp]
     },
 
-    delete : (id) => {
-        listEmp[id] = "deleted emp" + (parseInt(id)+1)
-        return [...listEmp]
+    delete : (empToFired) => {
+        let indexEmp = employees.findIndex(emp => emp.id == empToFired.id)
+        
+        employees[indexEmp] = empToFired
+        return employees[indexEmp]
     }
 }
 
