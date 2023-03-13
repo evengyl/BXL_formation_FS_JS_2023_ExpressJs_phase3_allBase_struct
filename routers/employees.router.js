@@ -24,29 +24,4 @@ routerEmployees
         .delete(employeesController.delete)
 
 
-
-
-/*
-routerEmployees.get("/", (req, res, next) => {
-    res.json({ route : "get all"})
-})
-
-routerEmployees.get("/:id", (req, res, next) => {
-    res.json({ route : "get one"})
-})
-
-routerEmployees.post("/", (req, res, next) => {
-    res.json({ route : "create one"})
-})
-
-routerEmployees.put("/:id", (req, res, next) => {
-    res.json({ route : "update one"})
-})
-
-routerEmployees.delete("/:id", (req, res, next) => {
-    res.json({ route : "delete one"})
-})
-*/
-
-
 module.exports = routerEmployees

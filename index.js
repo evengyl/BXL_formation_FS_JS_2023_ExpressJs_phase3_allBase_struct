@@ -4,20 +4,10 @@ const port = process.env.PORT || 3000
 
 
 app.use(express.json()) //permet de traiter le body du corp écris et converti en json utilisable
-/* remember :) before use that fucking shit */
-/*
-let body = ""
-req.on("data", (buffer) => {
-    body += buffer.toString()
-})
 
-req.on("end", () => {
-    let okBody = parse(body)
-*/
 
 const routerBase = require("./routers/base.router")
 app.use("/api/v1", routerBase)
-
 
 
 app.all("*", (req, res, next) => {

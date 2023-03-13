@@ -8,7 +8,7 @@ let listEmp = ["emp1", "emp2", "emp3", "emp4"]
 const employeesModels = {
     
     getAll : () => {
-        return listEmp
+        return [...listEmp]
     },
 
     getOne : (id) => {
@@ -21,13 +21,13 @@ const employeesModels = {
     },
 
     update : (id) => {
-        listEmp[id] = "updated emp"
-        return listEmp
+        listEmp[id] = "updated emp" + (parseInt(id)+1)
+        return [...listEmp]
     },
 
     delete : (id) => {
-        listEmp[id] = "deleted emp"
-        return listEmp
+        listEmp[id] = "deleted emp" + (parseInt(id)+1)
+        return [...listEmp]
     }
 }
 

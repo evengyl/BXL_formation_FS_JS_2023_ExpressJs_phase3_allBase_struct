@@ -31,7 +31,7 @@ const employeesController = {
     },
 
     update : (req, res) => {
-        let id = req.params.id
+        let id = parseInt(req.params.id)-1
 
         let upEmp = employeesService.update(id)
         //MODEL TO DTO -> Data Transfert Object
@@ -39,7 +39,7 @@ const employeesController = {
     },
 
     delete : (req, res) => {
-        let id = req.params.id
+        let id = parseInt(req.params.id)-1
 
         let firedEmp = employeesService.delete(id)
         //MODEL TO DTO -> Data Transfert Object
