@@ -1,14 +1,9 @@
-/*
-    C'est l'interface entre notre db et notre code JS
-    elle ne sert qu'a aller chercher et traiter les demande sql
-    elle renvoie les données au services pour qu'il puisse faire son BAL
-*/
-let listEmp = ["emp1", "emp2", "emp3", "emp4"]
+const employees = require("../datas/employees.json")
 
 const employeesModels = {
     
     getAll : () => {
-        return [...listEmp]
+        return [...employees]
     },
 
     getOne : (id) => {
@@ -16,8 +11,12 @@ const employeesModels = {
     },
 
     create : (newEmp) => {
-        listEmp.push(newEmp)
-        return listEmp[listEmp.length-1]
+        let uuid = employees.length+1
+        newEmp.id = uuid
+        employees.push(newEmp)
+        //simulation du save db (push) -> on ne retourne pas le newEmp !!! on retourne le newEmp venant de la db !!!
+        let empCreated = employees.find(emp => emp.id == uuid)
+        return empCreated
     },
 
     update : (id) => {

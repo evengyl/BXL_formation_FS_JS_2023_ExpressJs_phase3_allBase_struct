@@ -16,9 +16,9 @@ app.all("*", (req, res, next) => {
 
 
 app.use((error, req, res, next) => {
-    console.log("Error : ", req.url)
-    console.log(error)
-    res.status(500).json({ "Error" : ''})
+    console.log("Error URL : ", req.url)
+    console.log("Error Message : " + error)
+    res.status(500).json({ "Error" : req.url, "Message" : ""+error, "ErrorCode" : 500})
 })
 
 

@@ -23,8 +23,20 @@ const employeesController = {
         res.json(oneEmp)
     },
 
-    create : (req, res) => {
-        let newEmp = req.body.name
+    create : (req, res, next) => {
+
+        if(req.body.name == undefined || req.body.matricul == undefined 
+            || req.body.jobTitle == undefined || req.body.salary == undefined
+        )
+            throw new Error("Les paramètres du body ne sont pas complet !")
+
+        let newEmp = {
+            name : req.body.name,
+            matricul : req.body.matricul,
+            jobTitle : req.body.jobTitle,
+            salary : req.body.salary
+        }
+
         let newEmpCreated = employeesService.create(newEmp)
         //MODEL TO DTO -> Data Transfert Object
         res.json(newEmpCreated)

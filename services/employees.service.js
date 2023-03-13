@@ -11,7 +11,6 @@ const employeesService = {
     getAll : () => {
         let allEmp = employeesModels.getAll()
         //BAL
-        allEmp = allEmp.reverse()
         return allEmp
     },
 
@@ -22,6 +21,8 @@ const employeesService = {
     },
 
     create : (newEmp) => {
+        newEmp.fired = false
+        
         let newEmpCreated = employeesModels.create(newEmp)
         //BAL
         return newEmpCreated
